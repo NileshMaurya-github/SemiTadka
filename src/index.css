@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* SemiTadka Design System - Warm Food-App Theme */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Warm cream background with earthy tones */
+    --background: 40 33% 97%;
+    --foreground: 25 30% 15%;
+
+    /* Card styling - slightly warmer */
+    --card: 40 40% 99%;
+    --card-foreground: 25 30% 15%;
+
+    --popover: 40 40% 99%;
+    --popover-foreground: 25 30% 15%;
+
+    /* Primary: Sage Green */
+    --primary: 142 35% 35%;
+    --primary-foreground: 40 33% 97%;
+
+    /* Secondary: Warm Cream */
+    --secondary: 35 40% 92%;
+    --secondary-foreground: 25 30% 20%;
+
+    /* Muted: Soft sage tint */
+    --muted: 40 20% 94%;
+    --muted-foreground: 25 15% 45%;
+
+    /* Accent: Terracotta */
+    --accent: 16 65% 55%;
+    --accent-foreground: 40 33% 97%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 35 25% 88%;
+    --input: 35 25% 88%;
+    --ring: 142 35% 35%;
+
+    --radius: 1rem;
+
+    /* Food category colors */
+    --breakfast: 45 90% 55%;
+    --lunch: 142 40% 45%;
+    --dinner: 270 35% 50%;
+    --snacks: 16 70% 55%;
+
+    /* Mood filter colors */
+    --mood-light: 142 45% 50%;
+    --mood-spicy: 0 75% 55%;
+    --mood-comfort: 35 60% 50%;
+    --mood-quick: 200 70% 50%;
+
+    --sidebar-background: 40 33% 97%;
+    --sidebar-foreground: 25 30% 25%;
+    --sidebar-primary: 142 35% 35%;
+    --sidebar-primary-foreground: 40 33% 97%;
+    --sidebar-accent: 35 40% 92%;
+    --sidebar-accent-foreground: 25 30% 20%;
+    --sidebar-border: 35 25% 88%;
+    --sidebar-ring: 142 35% 35%;
+  }
+
+  .dark {
+    /* Dark mode with warm undertones */
+    --background: 25 25% 10%;
+    --foreground: 40 25% 92%;
+
+    --card: 25 20% 14%;
+    --card-foreground: 40 25% 92%;
+
+    --popover: 25 20% 14%;
+    --popover-foreground: 40 25% 92%;
+
+    /* Primary: Lighter sage for dark mode */
+    --primary: 142 40% 55%;
+    --primary-foreground: 25 25% 10%;
+
+    /* Secondary */
+    --secondary: 25 15% 20%;
+    --secondary-foreground: 40 25% 92%;
+
+    --muted: 25 15% 18%;
+    --muted-foreground: 35 15% 60%;
+
+    /* Accent: Brighter terracotta for dark */
+    --accent: 16 70% 60%;
+    --accent-foreground: 25 25% 10%;
+
+    --destructive: 0 62.8% 45%;
+    --destructive-foreground: 40 25% 92%;
+
+    --border: 25 15% 22%;
+    --input: 25 15% 22%;
+    --ring: 142 40% 55%;
+
+    /* Food category colors - brighter for dark mode */
+    --breakfast: 45 85% 60%;
+    --lunch: 142 45% 55%;
+    --dinner: 270 40% 60%;
+    --snacks: 16 75% 60%;
+
+    --sidebar-background: 25 25% 10%;
+    --sidebar-foreground: 40 25% 92%;
+    --sidebar-primary: 142 40% 55%;
+    --sidebar-primary-foreground: 25 25% 10%;
+    --sidebar-accent: 25 15% 20%;
+    --sidebar-accent-foreground: 40 25% 92%;
+    --sidebar-border: 25 15% 22%;
+    --sidebar-ring: 142 40% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Playfair Display', serif;
+  }
+
+  .font-sans {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* Hover scale animation */
+  .hover-scale {
+    @apply transition-transform duration-200 hover:scale-105;
+  }
+
+  /* Card hover effect */
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+
+  /* Gradient overlays for food images */
+  .food-gradient {
+    @apply bg-gradient-to-t from-black/60 via-black/20 to-transparent;
+  }
+}
