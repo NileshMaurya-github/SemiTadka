@@ -70,13 +70,13 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/favorites" className="hover:text-primary transition-colors">
-                  Favorites
+                <Link to="/privacy-policy" className="hover:text-primary transition-colors">
+                  Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link to="/random" className="hover:text-primary transition-colors">
-                  Surprise Recipe
+                <Link to="/terms" className="hover:text-primary transition-colors">
+                  Terms & Conditions
                 </Link>
               </li>
             </ul>

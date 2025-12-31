@@ -8,10 +8,14 @@ import RecipeTips from "@/components/recipe/RecipeTips";
 import SimilarRecipes from "@/components/recipe/SimilarRecipes";
 import FavoriteButton from "@/components/favorites/FavoriteButton";
 import { formatTime } from "@/data/types";
+import SEO from "@/components/SEO";
+import { getRecipeImage } from "@/data/recipe-images";
 
 const Recipe = () => {
   const { slug } = useParams<{ slug: string }>();
   const recipe = slug ? getRecipeBySlug(slug) : undefined;
+
+  const imageUrl = recipe ? getRecipeImage(recipe.slug, recipe.category) : "";
 
   if (!recipe) {
     return <Navigate to="/404" replace />;
@@ -19,8 +23,38 @@ const Recipe = () => {
 
   return (
     <Layout>
-      {/* SEO Meta */}
-      <title>{recipe.name} - SemiTadka</title>
+      {/* SEO & Structured Data */}
+      <SEO
+        title={recipe.name}
+        description={recipe.description}
+        image={imageUrl}
+        type="article"
+      />
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Recipe",
+          "name": recipe.name,
+          "image": imageUrl,
+          "description": recipe.description,
+          "author": {
+            "@type": "Organization",
+            "name": "SemiTadka"
+          },
+          "datePublished": "2024-01-01",
+          "prepTime": `PT${recipe.prepTime}M`,
+          "cookTime": `PT${recipe.cookTime}M`,
+          "totalTime": `PT${recipe.prepTime + recipe.cookTime}M`,
+          "recipeYield": `${recipe.servings} servings`,
+          "recipeCategory": recipe.category,
+          "recipeCuisine": "Indian",
+          "recipeIngredient": recipe.ingredients,
+          "recipeInstructions": recipe.steps.map((step, index) => ({
+            "@type": "HowToStep",
+            "text": step
+          }))
+        })}
+      </script>
 
       {/* Hero Section */}
       <RecipeHero recipe={recipe} />
